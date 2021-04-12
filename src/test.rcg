@@ -1,0 +1,27 @@
+model EmTest
+
+type int
+type string
+
+external VerifyString using string
+external mcWow using string
+external fishing using int
+
+entity User {
+    DbId: int
+    Name: string require VerifyString
+    Password: string require mcWow
+    Age: int require Age > 0 && Age < 130
+}
+
+entity Potato {
+	kind: string
+	age: int
+}
+
+controller UserController uses User {
+    CREATE with Potato:kind exclude DbId
+    GET on Name
+    UPDATE on DbId with Password, Name
+    LIST
+}
