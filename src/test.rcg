@@ -4,15 +4,15 @@ type int
 type string
 
 external VerifyString using string
-external mcWow using string
+external VerifyPassword using string
 external fishing using int
 
 entity User {
     DbId: int
     Name: string require VerifyString
-    Password: string require mcWow
+    Password: string require VerifyPassword
     Age: int require Age > 0 && Age < 130
-}
+} 
 
 entity Potato {
 	kind: string

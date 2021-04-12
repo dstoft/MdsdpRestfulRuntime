@@ -6,11 +6,12 @@ namespace EmTest.Models {
 			ExternalCode = externalCode;
 			this.kind = kind;
 			this.age = age;
+			CheckRequirements();
 		}
 		private readonly IExternalCode ExternalCode;
 		public string kind { get; }
 		public int age { get; }
-		public void checkRequirements() {
+		public void CheckRequirements() {
 		}
 	}
 }
