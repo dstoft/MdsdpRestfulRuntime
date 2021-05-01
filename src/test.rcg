@@ -5,7 +5,6 @@ type string
 
 external VerifyString using string
 external VerifyPassword using string
-external fishing using int
 
 entity User {
     DbId: int
@@ -14,14 +13,14 @@ entity User {
     Age: int require Age > 0 && Age < 130
 } 
 
-entity Potato {
+entity Resource1 {
 	kind: string
 	age: int
 }
 
 controller UserController uses User {
-    CREATE with Potato:kind exclude DbId
+    CREATE with Resource1:kind exclude DbId
     GET on Name
     UPDATE on DbId with Password, Name
     LIST
-}
+} 

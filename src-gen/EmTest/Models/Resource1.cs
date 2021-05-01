@@ -1,8 +1,8 @@
 using System;
 
 namespace EmTest.Models {
-	public class Potato {
-		public Potato(IExternalCode externalCode, string kind, int age) {
+	public class Resource1 {
+		public Resource1(IExternalCode externalCode, string kind, int age) {
 			ExternalCode = externalCode;
 			this.kind = kind;
 			this.age = age;
