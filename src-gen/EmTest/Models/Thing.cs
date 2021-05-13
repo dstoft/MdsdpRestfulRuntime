@@ -1,16 +1,14 @@
 using System;
 
 namespace EmTest.Models {
-	public class Resource1 {
-		public Resource1(IExternalCode externalCode, string kind, int age)  {
+	public class Thing {
+		public Thing(IExternalCode externalCode, string madeOf)  {
 			ExternalCode = externalCode;
-			this.kind = kind;
-			this.age = age;
+			this.MadeOf = madeOf;
 			CheckRequirements();
 		}
 		protected readonly IExternalCode ExternalCode;
-		public string kind { get; }
-		public int age { get; }
+		public string MadeOf { get; }
 		public void CheckRequirements() {
 		}
 	}

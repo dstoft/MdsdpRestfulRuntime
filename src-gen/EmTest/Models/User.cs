@@ -1,16 +1,14 @@
 using System;
 
 namespace EmTest.Models {
-	public class User {
-		public User(IExternalCode externalCode, int dbId, string name, string password, int age) {
-			ExternalCode = externalCode;
+	public class User : Person {
+		public User(IExternalCode externalCode, int dbId, string name, string password, int age, int cpr, string madeOf) : base(externalCode, cpr, madeOf)  {
 			this.DbId = dbId;
 			this.Name = name;
 			this.Password = password;
 			this.Age = age;
 			CheckRequirements();
 		}
-		private readonly IExternalCode ExternalCode;
 		public int DbId { get; }
 		public string Name { get; }
 		public string Password { get; }
