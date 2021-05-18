@@ -17,6 +17,11 @@ namespace EmTest.Models {
 			if(!(ExternalCode.VerifyString(Name))) throw new Exception("Requirement not fulfilled");
 			if(!(ExternalCode.VerifyPassword(Password))) throw new Exception("Requirement not fulfilled");
 			if(!(((Age>0)&&(Age<130)))) throw new Exception("Requirement not fulfilled");
+			if(!(((Age>5)||(Age<130)))) throw new Exception("Requirement not fulfilled");
+			if(!(ExternalCode.VerifyPassword(Name))) throw new Exception("Requirement not fulfilled");
+			if(!((Cpr>0))) throw new Exception("Requirement not fulfilled");
+			if(!(ExternalCode.VerifyCpr(Cpr))) throw new Exception("Requirement not fulfilled");
+			if(!(ExternalCode.VerifyString(MadeOf))) throw new Exception("Requirement not fulfilled");
 		}
 	}
 }

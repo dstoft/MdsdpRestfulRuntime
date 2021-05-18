@@ -5,6 +5,7 @@ type string
 
 external VerifyString using string
 external VerifyPassword using string
+external VerifyCpr using int
 
 entity Thing {
 	MadeOf: string
@@ -16,18 +17,30 @@ entity Person : Thing {
 
 entity User : Person {
     DbId: int
-    Name: string require VerifyString
-    Password: string require VerifyPassword
-    Age: int require Age > 0 && Age < 130
+    Name: string requires VerifyString
+    Password: string requires VerifyPassword
+    Age: int requires Age > 0 && Age < 130
+    require Age > 5 || Age < 130
+    require VerifyPassword of Name
+    require Cpr > 0
+    require VerifyCpr of Cpr
+    require VerifyString of MadeOf
+	
+	Book reference Resource1
+	Books list Resource1 requires Books.Age > 5
+	require VerifyString of Book.Title
 }
 
-entity Resource1 {
-	kind: string
-	age: int
+entity GeneralResource {
+	Age: int
+}
+
+entity Resource1 : GeneralResource {
+	Title: string
 }
 
 controller UserController uses User {
-    CREATE with Resource1:kind exclude DbId
+    CREATE with Book.Title with Books.Title exclude DbId
     GET on Name
     UPDATE on DbId with Password, Name
     LIST
