@@ -1,29 +1,27 @@
-﻿using System.Collections.Generic;
-using EmTest;
-using EmTest.Models;
+﻿using University;
 
 namespace RestfulRuntime
 {
     public class ExternalCode : IExternalCode
     {
-        public bool VerifyString(string parameter)
+        public bool VerifyName(string parameter)
         {
-            return true;
+            throw new System.NotImplementedException();
         }
 
-        public bool VerifyPassword(string parameter)
+        public bool VerifyBookTitle(string parameter)
         {
-            return true;
+            throw new System.NotImplementedException();
         }
 
         public bool VerifyCpr(int parameter)
         {
-            return true;
+            throw new System.NotImplementedException();
         }
 
-        public bool VerifyBooks(List<Resource1> parameter)
+        public bool VerifyIsUniversityMaterial(string parameter)
         {
-            return true;
+            throw new System.NotImplementedException();
         }
     }
 }

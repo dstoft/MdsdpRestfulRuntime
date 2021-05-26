@@ -1,17 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using EmTest;
-using EmTest.Application.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using University;
+using University.Application.Interfaces;
 
 namespace RestfulRuntime
 {
@@ -28,7 +21,10 @@ namespace RestfulRuntime
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IExternalCode, ExternalCode>();
-            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IAuthorService, AuthorService>();
+            services.AddTransient<IBookService, BookService>();
+            services.AddTransient<ICourseService, CourseService>();
+            services.AddTransient<IStudentService, StudentService>();
             services.AddControllers();
             services.AddSwaggerDocument();
         }

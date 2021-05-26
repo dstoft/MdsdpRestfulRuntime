@@ -1,0 +1,72 @@
+model University
+
+type int
+type string 
+
+external VerifyName using string
+external VerifyBookTitle using string
+external VerifyCpr using int
+external VerifyIsUniversityMaterial using string
+
+entity Person {
+	Cpr using int requires VerifyCpr
+	Name using string requires VerifyName
+	Age using int requires Age > 0 && Age < 130
+}
+
+entity Author : Person {
+	require Age > 18
+}
+
+entity Book {
+	Author reference Author
+	Title using string
+	IndustryArea using string
+}
+
+entity Teacher : Person {
+	Education using string
+	require Age > 18
+}
+
+entity Course {
+	DbId using int
+	MainBook reference Book
+	OtherMaterial list Book
+	TaughtBy reference Teacher
+	Education using string
+	require Education = TaughtBy.Education
+	require TaughtBy.Age > 25
+	require VerifyIsUniversityMaterial of MainBook.IndustryArea
+}
+
+entity Student : Person {
+	StudentId using int requires StudentId >= 1000 && StudentId < 10000
+	Studies list Course
+	OwnsBooks list Book
+}
+
+controller BookController uses Book {
+	CREATE with Author.Name
+    LIST
+}
+
+controller Author uses Author {
+	CREATE
+	GET on Cpr
+	LIST
+	UPDATE on Cpr with Age
+}
+
+controller CourseController uses Course {
+	CREATE with MainBook.Title with OtherMaterial.Title with TaughtBy.Name exclude DbId
+	LIST
+}
+
+controller StudentController uses Student {
+	CREATE with Studies.DbId with OwnsBooks.Title exclude StudentId
+	GET on StudentId
+	LIST
+	UPDATE on StudentId with Studies, OwnsBooks
+	DELETE on StudentId
+}
