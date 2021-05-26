@@ -6,20 +6,21 @@ type string
 external VerifyString using string
 external VerifyPassword using string
 external VerifyCpr using int
+external VerifyBooks list Resource1
 
 entity Thing {
-	MadeOf: string
+	MadeOf using string
 } 
 
 entity Person : Thing {
-	Cpr: int
+	Cpr using int
 } 
 
 entity User : Person {
-    DbId: int
-    Name: string requires VerifyString
-    Password: string requires VerifyPassword
-    Age: int requires Age > 0 && Age < 130
+    DbId using int
+    Name using string requires VerifyString
+    Password using string requires VerifyPassword
+    Age using int requires Age > 0 && Age < 130
     require Age > 5 || Age < 130
     require VerifyPassword of Name
     require Cpr > 0
@@ -27,20 +28,20 @@ entity User : Person {
     require VerifyString of MadeOf
 	
 	Book reference Resource1
-	Books list Resource1 requires Books.Age > 5
+	Books list Resource1 
 	require VerifyString of Book.Title
-}
+} 
 
 entity GeneralResource {
-	Age: int
-}
+	Age using int
+} 
 
 entity Resource1 : GeneralResource {
-	Title: string
+	Title using string
 }
 
 controller UserController uses User {
-    CREATE with Book.Title with Books.Title exclude DbId
+    CREATE with Book.Title with Books.Age exclude DbId
     GET on Name
     UPDATE on DbId with Password, Name
     LIST

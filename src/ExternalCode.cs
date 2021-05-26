@@ -1,4 +1,6 @@
-﻿using EmTest;
+﻿using System.Collections.Generic;
+using EmTest;
+using EmTest.Models;
 
 namespace RestfulRuntime
 {
@@ -14,7 +16,12 @@ namespace RestfulRuntime
             return true;
         }
 
-        public bool fishing(int parameter)
+        public bool VerifyCpr(int parameter)
+        {
+            return true;
+        }
+
+        public bool VerifyBooks(List<Resource1> parameter)
         {
             return true;
         }

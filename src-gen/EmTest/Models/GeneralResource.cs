@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 
 namespace EmTest.Models {
-	public class Thing {
-		public Thing(IExternalCode externalCode, string madeOf)  {
+	public class GeneralResource {
+		public GeneralResource(IExternalCode externalCode, int age)  {
 			ExternalCode = externalCode;
-			this.MadeOf = madeOf;
+			this.Age = age;
 			CheckRequirements();
 		}
 		protected readonly IExternalCode ExternalCode;
-		public string MadeOf { get; }
+		public int Age { get; }
 		public void CheckRequirements() {
 		}
 	}

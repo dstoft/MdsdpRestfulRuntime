@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using EmTest.Models;
+
 namespace EmTest.Application.Parameters {
 	public class CreateUserParameters {
 		public string Name { get; set; }
@@ -5,5 +8,7 @@ namespace EmTest.Application.Parameters {
 		public int Age { get; set; }
 		public int Cpr { get; set; }
 		public string MadeOf { get; set; }
+		public string BookTitle { get; set; }
+		public List<int> BooksAge { get; set; }
 	}
 }

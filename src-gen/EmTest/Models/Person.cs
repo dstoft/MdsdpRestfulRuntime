@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace EmTest.Models {
 	public class Person : Thing {

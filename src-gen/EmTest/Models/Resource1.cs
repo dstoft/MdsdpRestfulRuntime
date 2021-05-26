@@ -1,16 +1,13 @@
 using System;
+using System.Collections.Generic;
 
 namespace EmTest.Models {
-	public class Resource1 {
-		public Resource1(IExternalCode externalCode, string kind, int age)  {
-			ExternalCode = externalCode;
-			this.kind = kind;
-			this.age = age;
+	public class Resource1 : GeneralResource {
+		public Resource1(IExternalCode externalCode, string title, int age) : base(externalCode, age)  {
+			this.Title = title;
 			CheckRequirements();
 		}
-		protected readonly IExternalCode ExternalCode;
-		public string kind { get; }
-		public int age { get; }
+		public string Title { get; }
 		public void CheckRequirements() {
 		}
 	}
